@@ -41,6 +41,8 @@ public class QueryDatabaseAuthenticationHandlerTests {
 
     private static final String SQL = "SELECT password FROM casusers where username=?";
 
+    private static final String PWD0="psw0";
+
     @Autowired
     @Qualifier("dataSource")
     private DataSource dataSource;
@@ -112,7 +114,7 @@ public class QueryDatabaseAuthenticationHandlerTests {
         q.setDataSource(this.dataSource);
         q.setSql(SQL);
         q.authenticateUsernamePasswordInternal(
-                CoreAuthenticationTestUtils.getCredentialsWithDifferentUsernameAndPassword("user0", "psw0"), "psw0");
+                CoreAuthenticationTestUtils.getCredentialsWithDifferentUsernameAndPassword("user0", PWD0), PWD0);
 
     }
 
@@ -122,7 +124,7 @@ public class QueryDatabaseAuthenticationHandlerTests {
         q.setDataSource(this.dataSource);
         q.setSql(SQL.replace("password", "*"));
         q.authenticateUsernamePasswordInternal(
-                CoreAuthenticationTestUtils.getCredentialsWithDifferentUsernameAndPassword("user0", "psw0"), "psw0");
+                CoreAuthenticationTestUtils.getCredentialsWithDifferentUsernameAndPassword("user0", PWD0),PWD0);
 
     }
 
